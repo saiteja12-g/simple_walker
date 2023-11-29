@@ -21,27 +21,22 @@ cd ~/<your workspace>/src
 Clone the GitHub repository
 
 ```sh
-git clone https://github.com/saiteja12-g/simple_walker_bot.git
+git clone https://github.com/saiteja12-g/simple_walker.git
 ```
 
 Now to build the package go to the root of the ROS2 workspace
 
 ```sh
-cd ~/ros2_ws
+cd ..
 # check the dependencies
 rosdep install -i --from-path src --rosdistro humble -y
+# Building the package
 colcon build --packages-select simple_walker
 ```
 
 ## Run Instructions
-
-After the successful build, to run open a new terminal,
-
-```sh
-cd ~/ros2_ws
+Sourcing the package
 ```
-
-```sh
 source install/setup.bash
 ```
 
@@ -50,9 +45,8 @@ source install/setup.bash
 To run the launch file and start the ros bag file recording,
 
 ```sh
-cd ~/ros2_ws/src/simple_walker/bag_files
+cd src/simple_walker/bag\ files
 ```
-
 ```sh
 ros2 launch simple_walker walker_launch.py bag_record:=True
 ```
