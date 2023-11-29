@@ -19,7 +19,7 @@ using LASER_SCAN = sensor_msgs::msg::LaserScan;
 using TWIST = geometry_msgs::msg::Twist;
 
 class Walker : public rclcpp::Node {
-  public:
+ public:
     Walker() : Node("simple_walker") {
         auto callback = std::bind(&Walker::laserData_callback, this, _1);
         laser_data_sub =
@@ -27,7 +27,7 @@ class Walker : public rclcpp::Node {
         publish_velocity = this->create_publisher<TWIST>("cmd_vel", 10);
     }
 
-  private:
+ private:
   void laserData_callback(const LASER_SCAN& scanData) {
     if (scanData.header.stamp.sec == 0) {
       return;
