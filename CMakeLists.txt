@@ -14,6 +14,21 @@ find_package(geometry_msgs REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+add_executable(simple_walker src/walker.cpp)
+ament_target_dependencies(simple_walker rclcpp geometry_msgs sensor_msgs)
+
+# Adding the walker node
+install(TARGETS
+  simple_walker
+  DESTINATION lib/${PROJECT_NAME}/
+)
+
+# Adding the launch file
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
